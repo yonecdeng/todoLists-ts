@@ -15,7 +15,7 @@ import TodoEvent from "./js/TodoEvent";
   }
   function bindEvent(): void { //给dom元素绑定事件
     oButton.addEventListener('click', handleAddBtnClick, false);
-    oTodoList.addEventListener('click', handleListClick, false);
+    oTodoList.addEventListener('click', handleListClick, false); //事件委托(todolist下的input和button事件都委托给它)
   }
 
   function handleAddBtnClick(): void {
@@ -33,7 +33,7 @@ import TodoEvent from "./js/TodoEvent";
     }
   }
 
-  function handleListClick(e: MouseEvent): void {
+  function handleListClick(e: MouseEvent): void {//事件委托(todolist下的input和button事件都委托给它)
     const tar = e.target as HTMLElement//获取点击的dom元素并断言为HTMLElement
     const tagName = tar.tagName//上面要断言为HTMLElement才会有类型提示说tar下有tagName属性,不然ts会把tar当targetEvent类型,此类型ts是认为无tagName属性的
 
